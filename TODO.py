@@ -1,4 +1,13 @@
-def todo(list_of_commands: list=[]) -> None: 
+def todo(list_of_commands: list=[]) -> None:
+    """
+    A to do application that caputures tasks and allows them to be marked off.
+
+    Args:
+        list_of_commands (list, optional): A list of commands to be executed in sequential order.
+
+    Returns:
+        None
+    """
     listo: list = []
     for command in list_of_commands:
         print("1. Add Task")
