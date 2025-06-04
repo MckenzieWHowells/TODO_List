@@ -1,4 +1,5 @@
-def todo(listo=[], list_of_commands=[]): 
+def todo(list_of_commands: list=[]) -> None: 
+    listo: list = []
     for command in list_of_commands:
         print("1. Add Task")
         print("2. View Tasks")
