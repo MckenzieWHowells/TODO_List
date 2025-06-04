@@ -1,4 +1,7 @@
-def todo(list_of_commands: list=[]) -> None:
+"""
+A simple to-do application that allows users to add, view, and mark tasks as done.
+"""
+def todo(list_of_commands: list) -> None:
     """
     A to do application that caputures tasks and allows them to be marked off.
 
@@ -8,6 +11,8 @@ def todo(list_of_commands: list=[]) -> None:
     Returns:
         None
     """
+    if list_of_commands is None or not isinstance(list_of_commands, list):
+        list_of_commands = []
     listo: list = []
     for command in list_of_commands:
         print("1. Add Task")
@@ -26,7 +31,7 @@ def todo(list_of_commands: list=[]) -> None:
             print("-"*50)
         elif command == '3':
             usr_input = input("Enter task number to mark as done: ")
-            if 0 <=  int(usr_input) - 1 < len(listo): 
+            if 0 <=  int(usr_input) - 1 < len(listo):
                 listo.pop(int(usr_input) - 1)
                 print("Task marked as done.")
             else:
@@ -42,4 +47,4 @@ def todo(list_of_commands: list=[]) -> None:
     print(listo)
 
 # Example usage:
-todo(list_of_commands=['1', '2', '3', '1', '4'])
+todo(None)
