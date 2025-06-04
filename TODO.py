@@ -7,7 +7,7 @@ def todo(list_of_commands: list=[]) -> None:
         print("4. Exit")
         print("="*50)
         if command == '1':
-            tsk = input("Enter task: ")
+            tsk: str = input("Enter task: ")
             listo.append(tsk)
             print("-"*50)
         elif command == '2':
