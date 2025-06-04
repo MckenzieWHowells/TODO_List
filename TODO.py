@@ -1,50 +1,84 @@
 """
-A simple to-do application that allows users to add, view, and mark tasks as done.
+A simple to-do application that allows users to add tasks to a to-do list.
 """
-def todo(list_of_commands: list) -> None:
+
+def convey_instructions():
     """
-    A to do application that caputures tasks and allows them to be marked off.
+    Print instructions for the user
+    """
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Mark Task as Done")
+    print("4. Exit")
+    print("="*50)
+
+def add_task(listo:list[str]):
+    """
+    Add task to-do list
 
     Args:
-        list_of_commands (list, optional): A list of commands to be executed in sequential order.
-
-    Returns:
-        None
+        listo (list[str]): The user's to-do list
     """
-    if list_of_commands is None or not isinstance(list_of_commands, list):
-        list_of_commands = []
-    listo: list = []
-    for command in list_of_commands:
-        print("1. Add Task")
-        print("2. View Tasks")
-        print("3. Mark Task as Done")
-        print("4. Exit")
-        print("="*50)
-        if command == '1':
-            tsk: str = input("Enter task: ")
-            listo.append(tsk)
-            print("-"*50)
-        elif command == '2':
-            print("Tasks:")
-            for i, t in enumerate(listo):
-                print(f"{i+1}. {t}")
-            print("-"*50)
-        elif command == '3':
-            usr_input = input("Enter task number to mark as done: ")
-            if 0 <=  int(usr_input) - 1 < len(listo):
-                listo.pop(int(usr_input) - 1)
-                print("Task marked as done.")
-            else:
-                print("Invalid task number.")
-        elif command == '4':
-            print("Exiting.")
-            print("-"*50)
+    tsk = input("Enter task: ")
+    listo.append(tsk)
+    print("-"*50)
+
+def view_task(listo:list[str]):
+    """
+    View tasks in to-do list
+
+    Args:
+        listo (list[str]): The user's to-do list
+    """
+    print("Tasks:")
+    for i, t in enumerate(listo):
+        print(f"{i+1}. {t}")
+    print("-"*50)
+
+def mark_as_done(listo:list[str]):
+    """
+    Mark tasks as done in to do list (takes them out of list)
+
+    Args:
+        listo (list[str]): The user's to-do list
+    """
+    usr_input = input("Enter task number to mark as done: ")
+    if 0 <=  int(usr_input) - 1 < len(listo):
+        listo.pop(int(usr_input) - 1)
+        print("Task marked as done.")
+    else:
+        print("Invalid task number.")
+
+def print_exit_message():
+    """
+    Print exit message
+    """
+    print("Exiting.")
+    print("-"*50)
+
+def main():
+    """
+    Runs the main menu for the to do list program
+    """
+    listo:list[str] = []
+    while True:
+
+        convey_instructions()
+
+        x = input("Enter your choice: ")
+
+        if x == '1':
+            add_task(listo)
+        elif x == '2':
+            view_task(listo)
+        elif x == '3':
+            mark_as_done(listo)
+        elif x == '4':
+            print_exit_message()
             break
         else:
             print("Invalid choice.")
             print("-"*50)
 
-    print(listo)
-
-# Example usage:
-todo(None)
+main()
+ 
